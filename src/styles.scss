@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+:root, *, ::after, ::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --prune: #9B0058;
+  --black: #281A08;
+  --white: #FFFFFF;
+  --grey: #F8F6F7;
+}
+
+body {
+  background-color: var(--grey);
+}
+
+.p-button {
+  font-size: 16px;
+  height: 35px;
+  padding: 0 16px;
+  border-radius: 12px;
+  gap: 8px;
+  width: fit-content!important;
+  text-align: center;
+  font-weight: 500!important;
+  display: flex;
+  justify-content: center;
+  transition: all 0.2s;
+  align-items: center;
+  background-color: var(--prune) !important;
+  margin: 16px 0;
+}
+
+.state--paid {
+  color: green;
+  border: 1px solid green;
+}
+
+.state--in {
+  color: orange;
+  border: 1px solid orange;
+}
