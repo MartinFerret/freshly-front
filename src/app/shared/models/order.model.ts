@@ -8,6 +8,6 @@ export interface Order {
   date: Date;
   createdAt: string;
   totalPrice: number;
-  state: 'paid' | 'in progress' | 'pending' | 'cancelled';
+  state: 'paid' | 'in progress' | 'pending' | 'cancelled' | 'delivered';
   product: Product[];
 }

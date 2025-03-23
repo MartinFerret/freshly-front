@@ -1,5 +1,5 @@
 <div class="card-wrapper">
-  @for (order of orders(); track order.id) {
+  @for (order of orders; track order.id) {
     <div class="card">
       <div class="badge state--{{ order.state }}">
         @if (order.state === 'paid') {
@@ -48,7 +48,7 @@
       <div class="price">
         <p>{{ order.totalPrice | currency: 'EUR' }}</p>
       </div>
-      <p-button [label]="'Update status'" />
+      <p-button [label]="'Update status'" (click)="changeStatus(order)" />
     </div>
   }
 </div>

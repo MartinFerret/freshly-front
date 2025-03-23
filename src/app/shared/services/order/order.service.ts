@@ -14,4 +14,8 @@ export class OrderService {
  public getOrders(): Observable<Order[]> {
    return this.httpClient.get<Order[]>(`${environment.apiURL}/orders`);
   }
+
+  updateOrderStatus(orderId: number, newState: string): Observable<Order> {
+    return this.httpClient.put<Order>(`${environment.apiURL}/orders/${orderId}/status`, { state: newState });
+  }
 }
