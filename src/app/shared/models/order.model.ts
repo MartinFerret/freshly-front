@@ -4,6 +4,7 @@ export interface Order {
   id: number;
   firstname: string;
   lastname: string;
+  country: string;
   address: string;
   date: Date;
   createdAt: string;

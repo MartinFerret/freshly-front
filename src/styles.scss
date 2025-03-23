@@ -15,7 +15,25 @@ body {
   background-color: var(--grey);
 }
 
-.p-button {
+.p-button:not(.p-button-outlined, .p-dialog-close-button, .p-confirmdialog-reject-button, .p-dialog-maximize-button) {
+  font-size: 16px;
+  height: 35px;
+  padding: 0 16px;
+  gap: 8px;
+  width: fit-content!important;
+  text-align: center;
+  font-weight: 500!important;
+  display: flex;
+  justify-content: center;
+  transition: all 0.2s;
+  align-items: center;
+  background-color: var(--prune) !important;
+  margin: 16px 0;
+  border: 1px solid transparent;
+  color: var(--white) !important;
+}
+
+.p-button-outlined, .p-confirmdialog-reject-button {
   font-size: 16px;
   height: 35px;
   padding: 0 16px;
@@ -28,8 +46,10 @@ body {
   justify-content: center;
   transition: all 0.2s;
   align-items: center;
-  background-color: var(--prune) !important;
+  background-color: var(--white) !important;
   margin: 16px 0;
+  border: 1px solid var(--prune) !important;
+  color: var(--prune) !important;
 }
 
 .state--paid {
@@ -40,4 +60,64 @@ body {
 .state--in {
   color: orange;
   border: 1px solid orange;
+}
+
+.p-button-icon {
+ font-size: 5px;
+}
+
+.p-dialog {
+  & .badge {
+    border-radius: 4px;
+    padding: 0 4px;
+    width: fit-content;
+    min-height: 20px;
+    gap: 4px;
+    font-size: 16px;
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .wrapper {
+    width: 90%;
+  }
+
+  & h2, h3 {
+    margin: 16px 0;
+  }
+
+  .order-infos {
+    & p {
+      margin: 8px 0;
+    }
+  }
+
+  & .product-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & p {
+      margin: 8px 0;
+    }
+  }
+
+  & p:has(strong) {
+    margin: 16px 0;
+  }
+}
+
+@keyframes toRightFromLeft {
+  49% {
+    transform: translateX(100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
 }

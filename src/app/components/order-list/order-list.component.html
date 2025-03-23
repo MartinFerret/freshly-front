@@ -1,3 +1,4 @@
+<app-order-dialog [order]="selectedOrder" [visible]="visible" />
 <div class="card-wrapper">
   @for (order of orders; track order.id) {
     <div class="card">
@@ -29,9 +30,9 @@
         }
         <p>{{ order.state | titlecase}}</p>
       </div>
-      <h3>Order from the {{ order.date | date: 'dd/MM/yyyy' }}</h3>
+      <h3>Order from the {{ order.date | date: 'dd/MM/yyyy' }} at {{ order.date | date: 'HH:mm' }}</h3>
       <div class="detail cursor-pointer">
-        <p>View details</p>
+        <p (click)="showOrderDetails(order)">View details</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M3.3335 10H16.6668M16.6668 10L11.6668 5M16.6668 10L11.6668 15" stroke="#9B0058" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -48,7 +49,10 @@
       <div class="price">
         <p>{{ order.totalPrice | currency: 'EUR' }}</p>
       </div>
-      <p-button [label]="'Update status'" (click)="changeStatus(order)" />
+      <div class="buttons">
+        <p-button [label]="'Update Status'" [icon]="'pi pi-sync'" (click)="confirmUpdate(order)" />
+        <p-button [outlined]="true" [icon]="'pi pi-times'" [label]="'Cancel Order'" (click)="deleteConfirm(order.id)" />
+      </div>
     </div>
   }
 </div>
