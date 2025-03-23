@@ -13,6 +13,7 @@
 
 body {
   background-color: var(--grey);
+  font-family: 'Roboto', sans-serif;
 }
 
 .p-button:not(.p-button-outlined, .p-dialog-close-button, .p-confirmdialog-reject-button, .p-dialog-maximize-button) {
@@ -38,7 +39,7 @@ body {
   height: 35px;
   padding: 0 16px;
   border-radius: 12px;
-  gap: 8px;
+  gap: 12px;
   width: fit-content!important;
   text-align: center;
   font-weight: 500!important;
@@ -96,8 +97,15 @@ body {
 
   & .product-wrapper {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+
+    & .quantity {
+      position: absolute;
+      left: 50%;
+    }
 
     & p {
       margin: 8px 0;
@@ -121,3 +129,4 @@ body {
     opacity: 1;
   }
 }
+

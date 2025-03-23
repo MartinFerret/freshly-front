@@ -9,7 +9,6 @@ import {MessageService} from 'primeng/api';
 import {ConfirmService} from '../../shared/services/confirm.service';
 import {Dialog} from 'primeng/dialog';
 import {Divider} from 'primeng/divider';
-import {OrderDialogComponent} from '../../shared/components/order-dialog/order-dialog.component';
 
 @Component({
   selector: 'app-order-list',
@@ -19,8 +18,7 @@ import {OrderDialogComponent} from '../../shared/components/order-dialog/order-d
     DatePipe,
     TitleCasePipe,
     Dialog,
-    Divider,
-    OrderDialogComponent
+    Divider
   ],
   standalone: true,
   templateUrl: './order-list.component.html',

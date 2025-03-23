@@ -1,16 +1,25 @@
 .card-wrapper {
   width: 100%;
   height: 100%;
-  margin: 32px;
+  margin: 32px auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 
   & .buttons {
     display: flex;
     flex-direction: row;
     gap: 8px;
+  }
+
+  .pi-sync, .pi-times {
+    transition: transform 0.3s ease;
+  }
+
+  p-button:hover .pi-sync,
+  p-button:hover .pi-times {
+    animation: toRightFromLeft .3s ease forwards;
   }
 
   & .card {
@@ -77,6 +86,10 @@
         text-decoration: underline;
         text-underline-offset: 5px;
         text-underline-color: var(--black);
+
+        &:hover {
+          color: var(--black);
+        }
       }
     }
 
