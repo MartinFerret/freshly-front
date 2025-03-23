@@ -5,6 +5,7 @@ import {CurrencyPipe, DatePipe, TitleCasePipe} from '@angular/common';
 import {Order} from '../../shared/models/order.model';
 import {Subscription} from 'rxjs';
 import {PollingService} from '../../shared/services/polling/polling.service';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-order-list',
@@ -21,6 +22,7 @@ import {PollingService} from '../../shared/services/polling/polling.service';
 export class OrderListComponent implements OnDestroy{
   private readonly orderService = inject(OrderService);
   private readonly pollingService = inject(PollingService);
+  private readonly messageService = inject(MessageService);
   protected orders: Order[] = [];
   private readonly subscriptions: Subscription[] = [];
 
@@ -47,6 +49,7 @@ export class OrderListComponent implements OnDestroy{
           this.orders.unshift(this.orders.splice(index, 1)[0]);
         }
       }
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Status updated for Order #00' + order.id });
     }
   ));
   }
