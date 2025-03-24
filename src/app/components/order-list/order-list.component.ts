@@ -30,7 +30,7 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './order-list.component.html',
   styleUrl: './order-list.component.scss'
 })
-export class OrderListComponent implements OnDestroy{
+export class OrderListComponent implements OnDestroy {
   private readonly orderService = inject(OrderService);
   private readonly pollingService = inject(PollingService);
   private readonly messageService = inject(MessageService);
@@ -39,7 +39,7 @@ export class OrderListComponent implements OnDestroy{
   private readonly subscriptions: Subscription[] = [];
   protected visible = false;
   protected filteredOrders: Order[] = [];
-  protected selectedState: string | null = null;
+  protected selectedState: string[] = [OrderStatus.IN_PROGRESS, OrderStatus.PAID];
   protected selectedCountry: string | null = null;
   protected countries: { label: string, value: string }[] = [];
   protected filterActive = false;
@@ -51,15 +51,16 @@ export class OrderListComponent implements OnDestroy{
       this.orders = orders;
       this.filteredOrders = orders;
       this.updateCountries();
+      this.filterOrders();
     }));
     this.pollingOrders();
   }
 
   private updateCountries() {
-    if (this.selectedState) {
+    if (this.selectedState.length) {
       const countriesForState = new Set(
         this.orders
-          .filter(order => order.state === this.selectedState)
+          .filter(order => this.selectedState.includes(order.state))
           .map(order => order.country)
       );
       this.countries = Array.from(countriesForState).map(country => ({ label: country, value: country }));
@@ -83,7 +84,7 @@ export class OrderListComponent implements OnDestroy{
 
   protected deleteConfirm(orderId: number) {
     this.confirmService.openConfirm({
-      message: 'Are you certain to delete order #00' + orderId + " ?",
+      message: 'Are you certain to delete order #00' + orderId + ' ?',
       accept: () => this.deleteOrder(orderId)
     });
   }
@@ -126,7 +127,7 @@ export class OrderListComponent implements OnDestroy{
   protected filterOrders() {
     this.filteredOrders = this.orders.filter(order => {
       return (
-        (!this.selectedState || order.state === this.selectedState) &&
+        (!this.selectedState.length || this.selectedState.includes(order.state)) &&
         (!this.selectedCountry || order.country === this.selectedCountry)
       );
     });
@@ -142,7 +143,7 @@ export class OrderListComponent implements OnDestroy{
   }
 
   protected resetFilter() {
-    this.selectedState = null;
+    this.selectedState = [OrderStatus.IN_PROGRESS, OrderStatus.PAID];
     this.selectedCountry = null;
 
     this.updateCountries();
