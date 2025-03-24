@@ -4,7 +4,7 @@ import {OrderListComponent} from './components/order-list/order-list.component';
 import {Toast} from 'primeng/toast';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {ConfirmDialog} from 'primeng/confirmdialog';
-import {ConfirmService} from './shared/services/confirm.service';
+import {ConfirmService} from './shared/services/confirm/confirm.service';
 import {DatePipe} from '@angular/common';
 
 @Component({

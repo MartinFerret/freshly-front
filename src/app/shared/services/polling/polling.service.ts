@@ -8,7 +8,7 @@ import {OrderService} from '../order/order.service';
   providedIn: 'root'
 })
 export class PollingService {
-  private readonly pollingInterval = 2000;
+  private readonly pollingInterval = 1000;
   private ordersSubject = new BehaviorSubject<Order[]>([]);
   private orderService = inject(OrderService);
 

@@ -1,3 +1,25 @@
+<div class="filters-wrapper">
+<div class="filters flex flex-row gap-2">
+  <p-button  label="Filters" icon="pi pi-filter" (click)="toggleFilter()"/>
+  <p-button [outlined]="true" label="Reset filters" icon="pi pi-refresh" (click)="resetFilter()" *ngIf="filterActive"/>
+</div>
+
+  <p-dropdown
+    *ngIf="filterActive"
+    [options]="orderStatus"
+    [(ngModel)]="selectedState"
+    (onChange)="filterOrders()"
+    placeholder="Select a status">
+  </p-dropdown>
+
+  <p-dropdown
+    *ngIf="filterActive"
+    [options]="countries"
+    [(ngModel)]="selectedCountry"
+    (onChange)="filterOrders()"
+    placeholder="Select a country">
+  </p-dropdown>
+</div>
 <p-dialog [header]="'Details'" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
   <div class="wrapper">
     <h2>Order #00{{ selectedOrder?.id }}</h2>
@@ -53,7 +75,7 @@
   </div>
 </p-dialog>
 <div class="card-wrapper">
-  @for (order of orders; track order.id) {
+  @for (order of filteredOrders; track order.id) {
     <div class="card">
       <div class="badge state--{{ order.state }}">
         @if (order.state === 'paid') {
