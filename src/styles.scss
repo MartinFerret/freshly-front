@@ -13,7 +13,7 @@
 
 body {
   background-color: var(--grey);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Belleza", sans-serif;
 }
 
 .p-button:not(.p-button-outlined, .p-dialog-close-button, .p-confirmdialog-reject-button, .p-dialog-maximize-button) {
@@ -61,6 +61,27 @@ body {
 .state--in {
   color: orange;
   border: 1px solid orange;
+}
+
+.state--cancelled {
+  color: red;
+  border: 1px solid red;
+  & svg {
+    fill: red;
+  }
+}
+
+.state--pending {
+  color: blue;
+  border: 1px solid blue;
+  & svg {
+    stroke: blue;
+  }
+}
+
+.state--delivered {
+  color: green;
+  border: 1px solid green;
 }
 
 .p-button-icon {
@@ -124,6 +145,19 @@ body {
   50% {
     opacity: 0;
     transform: translateX(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+
+@keyframes toTopFromBottom {
+  49% {
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(100%);
   }
   51% {
     opacity: 1;

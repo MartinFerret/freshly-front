@@ -1,7 +1,13 @@
 <div class="filters-wrapper">
 <div class="filters flex flex-row gap-2">
-  <p-button  label="Filters" icon="pi pi-filter" (click)="toggleFilter()"/>
-  <p-button [outlined]="true" label="Reset filters" icon="pi pi-refresh" (click)="resetFilter()" *ngIf="filterActive"/>
+  <p-button (click)="toggleFilter()">
+    <i class="pi pi-filter"></i>
+    <span>Filters</span>
+  </p-button>
+  <p-button [outlined]="true" (click)="resetFilter()" *ngIf="filterActive">
+    <i class="pi pi-refresh"></i>
+    <span>Reset filters</span>
+  </p-button>
 </div>
 
   <p-dropdown
@@ -82,5 +88,7 @@
         </p-button>
       </div>
     </div>
+  } @empty {
+    <p><strong>No order match this filter.</strong></p>
   }
 </div>

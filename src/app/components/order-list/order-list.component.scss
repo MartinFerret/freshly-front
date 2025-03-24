@@ -4,6 +4,15 @@
   & .p-dropdown {
     margin-right: 8px !important;
   }
+
+  & .pi-filter, .pi-refresh {
+    transition: transform 0.3s ease;
+  }
+
+  p-button:hover .pi-filter,
+  p-button:hover .pi-refresh {
+    animation: toTopFromBottom .3s ease forwards;
+  }
 }
 
 .card-wrapper {
