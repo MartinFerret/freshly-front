@@ -1,7 +1,7 @@
 import {Component, inject, OnDestroy} from '@angular/core';
 import {OrderService} from '../../shared/services/order/order.service';
 import {Button} from 'primeng/button';
-import {CurrencyPipe, DatePipe, NgIf, TitleCasePipe} from '@angular/common';
+import {CurrencyPipe, DatePipe, NgIf} from '@angular/common';
 import {Order} from '../../shared/models/order.model';
 import {Subscription} from 'rxjs';
 import {PollingService} from '../../shared/services/polling/polling.service';
@@ -12,6 +12,7 @@ import {Divider} from 'primeng/divider';
 import {DropdownModule} from 'primeng/dropdown';
 import {OrderStatus} from '../../shared/models/order-status.models';
 import {FormsModule} from '@angular/forms';
+import {BadgeOrderComponent} from '../../shared/components/badge-order/badge-order.component';
 
 @Component({
   selector: 'app-order-list',
@@ -19,12 +20,12 @@ import {FormsModule} from '@angular/forms';
     Button,
     CurrencyPipe,
     DatePipe,
-    TitleCasePipe,
     Dialog,
     Divider,
     DropdownModule,
     NgIf,
-    FormsModule
+    FormsModule,
+    BadgeOrderComponent
   ],
   standalone: true,
   templateUrl: './order-list.component.html',
